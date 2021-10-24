@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Hero Index</title>
+</head>
+<body>
+  {% load static %}
+  <img src="{% static 'superheroes/download.jpg' %}" alt="My image">
+
+     <h1>SUPER HERO CREATOR!</h1>
+    <h1>List of heroes</h1><br>
+    <h2>Click a hero for their details</h2>
+    <ul>
+       {%for hero in all_heroes %}
+          <li><h2>{{hero.name}} - <br>
+            <a href="{% url 'superheroes:detail' hero.id %}">Hero Details</a></a></h2></li>
+            <li><a href="{%  url 'superheroes:delete' hero.id %}">Delete A Hero</a></li>
+            <li><a href="{% url  'superheroes:edit' hero.id %}">Edit Hero</a></li>
+        {% endfor %}
+    </ul>
+         
+
+    <h1><a href="{% url 'superheroes:create' %}">Create New Hero!</a></h1>
+    
+</body>
+</html>
