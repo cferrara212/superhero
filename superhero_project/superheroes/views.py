@@ -26,7 +26,7 @@ def create(request):
         alter_ego = request.POST.get('alter_ego')
         primary_ability= request.POST.get('primary_ability')
         secondary_ability= request.POST.get('secondary_ability')
-        catch_phrase= request.POST.get('secondary_ability')
+        catch_phrase= request.POST.get('catch_phrase')
         new_hero = Superhero(name=name, alter_ego=alter_ego , primary_ability=primary_ability, secondary_ability=secondary_ability, catch_phrase=catch_phrase)
         new_hero.save()
         return HttpResponseRedirect(reverse('superheroes:index'))
@@ -46,9 +46,14 @@ def edit(request, hero_id):
         alter_ego = request.POST.get('alter_ego')
         primary_ability= request.POST.get('primary_ability')
         secondary_ability= request.POST.get('secondary_ability')
-        catch_phrase= request.POST.get('secondary_ability')
-        new_hero = Superhero(pk=hero_id, name=name, alter_ego=alter_ego , primary_ability=primary_ability, secondary_ability=secondary_ability, catch_phrase=catch_phrase)
-        new_hero.update()
+        catch_phrase= request.POST.get('catch_phrase')
+        hero = Superhero.objects.get(pk=hero_id)
+        hero.name= name
+        hero.alter_ego= alter_ego
+        hero.primary_ability = primary_ability
+        hero.secondary_ability = secondary_ability
+        hero.catch_phrase = catch_phrase
+        hero.save()        
         return HttpResponseRedirect(reverse('superheroes:index'))
     else:
         single_hero= Superhero.objects.get(pk=hero_id)

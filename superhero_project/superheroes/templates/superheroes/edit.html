@@ -7,17 +7,31 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="{% url 'superheroes:edit' %}" method="post">
-        {%csrf_token%}
+    
+    <h1>Edit Hero</h1>
+    <ul>
+      <li><h1>Name:</h1><h2>{{single_hero.name}}</h2></li>
+      <li><h1>Alter Ego:</h1><h2>{{single_hero.alter_ego}}</h2></li>
+      <li><h1>Primary Ability:</h1><h2>{{single_hero.primary_ability}}</h2></li>
+      <li><h1>Secondary Ability</h1><h2>{{single_hero.secondary_ability}}</h2></li>
+      <li><h1>Catch Phrase</h1><h2>{{single_hero.catch_phrase}}</h2></li>
+    </ul>
+    
+        <form action="{% url 'superheroes:edit' single_hero.id %}" method="post">
+            {%csrf_token%}
+            
+            Name:<input type="text" name="name" id="name"><br/>
+            Alter Ego:<input type="text" name="alter_ego" id="alter_ego"><br/> 
+            Primary Ability:<input type="text" name="primary_ability" id="primary_ability"><br/>
+            Secondary Ability:<input type="text" name="secondary_ability" id="secondary_ability"><br/>
+            Catchphrase:<input type="text" name="catch_phrase" id="catch_phrase"><br/>
+            <input type="submit" value="Add!" name="hero.id" id="hero_id">
+  
+  
+      </form>
+    
         
-        Name:<input type="text" name="name" id="name"><br/>
-        Alter Ego:<input type="text" name="alter_ego" id="alter_ego"><br/> 
-        Primary Ability:<input type="text" name="primary_ability" id="primary_ability"><br/>
-        Secondary Ability:<input type="text" name="secondary_ability" id="secondary_ability"><br/>
-        Catchphrase:<input type="text" name="catch_phrase" id="catch_phrase"><br/>
-        <input type="submit" value="Add!" name="hero.id" id="hero_id">
 
 
-  </form>
 </body>
 </html>

@@ -24,4 +24,4 @@ urlpatterns = [
     path('superheroes/', include('superheroes.urls')),
     path('', RedirectView.as_view(url='/superheroes/')),
     
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] 
